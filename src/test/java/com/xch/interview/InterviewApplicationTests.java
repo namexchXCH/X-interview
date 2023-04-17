@@ -26,11 +26,8 @@ class InterviewApplicationTests {
 //        System.out.println(add);
 //        stringRedisTemplate.opsForValue().set("xch","18586780471",2L, TimeUnit.MINUTES);
 
-        String main = tokenUtil.sign("main");
+        String main = tokenUtil.sign("18586780471");
         System.out.println(main);
-             Thread.sleep(3000L);
-        System.out.println(tokenUtil.verify(main));
-
     }
 
 }

@@ -11,7 +11,7 @@ spring:
     username: root
     password: XCH627
 
-  #mongodbÊı¾İÔ´ÅäÖÃ
+  #mongodbæ•°æ®æºé…ç½®
   data:
     mongodb:
       #      uri: mongodb://127.0.0.1:27017/xchdb
