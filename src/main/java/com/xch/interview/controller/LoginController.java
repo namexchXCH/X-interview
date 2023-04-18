@@ -1,6 +1,8 @@
 package com.xch.interview.controller;
 
+import com.xch.interview.service.LoginService;
 import com.xch.interview.utils.BaseResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,14 +17,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LoginController {
 
+    @Autowired
+   private LoginService loginServiceImpl;
 
     /**
      *密码登录
      */
     @PostMapping("/interview/loginp")
     public BaseResult Passwordlogin(@RequestParam("phoneNumber") String phoneNumber,@RequestParam("code")String code){
-        System.out.println(phoneNumber+":"+code);
-       return BaseResult.ok("接口待实现");
+
+        return loginServiceImpl.passwordLogin(phoneNumber, code);
+//        return null;
     }
 
 
@@ -31,8 +36,25 @@ public class LoginController {
      */
     @PostMapping("/interview/logint")
     public BaseResult TextMessagelogin(@RequestParam("phoneNumber") String phoneNumber,@RequestParam("code")String code){
-        System.out.println(phoneNumber+":"+code);
-        return BaseResult.ok("接口待实现");
+
+        return loginServiceImpl.TextMessageLogin(phoneNumber,code);
+    }
+
+    /**
+     * 获取手机验证码
+     */
+    @GetMapping("/interview/getcode")
+    public BaseResult SendCdoe(){
+        return BaseResult.ok("功能待开发");
+    }
+
+    /**
+     * 注册账号
+     */
+
+    @PostMapping("/interview/register")
+    public BaseResult RegisterAccount(@RequestParam("phoneNumber") String phoneNumber,@RequestParam("password") String password){
+        return loginServiceImpl.RegisterAccount(phoneNumber,password);
     }
 
 }

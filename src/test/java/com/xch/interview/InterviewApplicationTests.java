@@ -28,6 +28,9 @@ class InterviewApplicationTests {
 
         String main = tokenUtil.sign("18586780471");
         System.out.println(main);
+        String kkk ="18586780471";
+        String substring = kkk.substring(kkk.length() - 4, kkk.length());
+        System.out.println(substring);
     }
 
 }

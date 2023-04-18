@@ -1,6 +1,7 @@
-package com.xch.interview.interceptor;
+package com.xch.interview.config;
 
 
+import com.xch.interview.interceptor.RequestInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;
 

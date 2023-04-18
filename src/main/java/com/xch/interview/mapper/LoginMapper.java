@@ -1,5 +1,6 @@
 package com.xch.interview.mapper;
 
+import com.xch.interview.pojo.logUser;
 import com.xch.interview.utils.BaseResult;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
@@ -19,12 +20,21 @@ public interface LoginMapper {
     /**
      *用户使用密码登录
      */
-    BaseResult passwordLogin(Map<String,Object> map);
+    logUser passwordLogin(Map<String,Object> map);
 
 
     /**
      *用户使用验证码登录
      */
-    BaseResult TextMessageLogin(Map<String,Object> map);
+    logUser TextMessageLogin(Map<String,Object> map);
+
+    /**
+     * 注册账号
+     */
+
+   Integer RegisterAccount(Map<String,Object> map);
+
+
+
 
 }

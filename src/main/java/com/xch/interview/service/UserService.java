@@ -1,5 +1,6 @@
 package com.xch.interview.service;
 
+import com.xch.interview.pojo.logUser;
 import org.springframework.stereotype.Service;
 
 /**
@@ -9,4 +10,7 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 public interface UserService {
+
+    Integer addUser(String PhoneNumber,String code);
+    logUser findUserByPhoneNumber(String PhoneNumber);
 }

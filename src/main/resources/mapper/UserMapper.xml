@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xch.interview.mapper.UserMapper">
+
+        <select id="findUserByPhoneNumber" resultType="logUser" parameterType="String">
+             select * from user where phone_number = #{PhoneNumber};
+        </select>
+
+         <insert id="addUser" parameterType="map">
+             insert into user(phone_number,password,user_id) values(#{phoneNumber},#{password},#{userId});
+         </insert>
+
+
+</mapper>
