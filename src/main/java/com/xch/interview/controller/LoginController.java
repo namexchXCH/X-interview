@@ -2,11 +2,15 @@ package com.xch.interview.controller;
 
 import com.xch.interview.service.LoginService;
 import com.xch.interview.utils.BaseResult;
+import com.xch.interview.utils.tokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @ClassName: logController
@@ -24,10 +28,11 @@ public class LoginController {
      *密码登录
      */
     @PostMapping("/interview/loginp")
-    public BaseResult Passwordlogin(@RequestParam("phoneNumber") String phoneNumber,@RequestParam("code")String code){
+    public BaseResult Passwordlogin(@RequestParam("phoneNumber") String phoneNumber, @RequestParam("code")String code, HttpServletResponse  response ){
+
+            response.setHeader("Authoriz", tokenUtil.sign(phoneNumber));
 
         return loginServiceImpl.passwordLogin(phoneNumber, code);
-//        return null;
     }
 
 

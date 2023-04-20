@@ -5,6 +5,7 @@ import com.xch.interview.mapper.UserMapper;
 import com.xch.interview.pojo.logUser;
 import com.xch.interview.service.LoginService;
 import com.xch.interview.utils.BaseResult;
+import com.xch.interview.utils.RandomName;
 import com.xch.interview.utils.SnowFlakeGenerateIdWorker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -114,6 +115,7 @@ public class LoginServiceImpl implements LoginService {
         stringStringHashMap.put("phoneNumber",phoneNumber);
         stringStringHashMap.put("password",password);
         stringStringHashMap.put("userId",id);
+        stringStringHashMap.put("netName", RandomName.getNickName());
         Integer integer = userMapper.addUser(stringStringHashMap);
 
         if (integer > 0){

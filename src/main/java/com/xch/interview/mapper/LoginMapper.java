@@ -1,7 +1,6 @@
 package com.xch.interview.mapper;
 
 import com.xch.interview.pojo.logUser;
-import com.xch.interview.utils.BaseResult;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 

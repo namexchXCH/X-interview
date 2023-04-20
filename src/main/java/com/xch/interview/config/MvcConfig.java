@@ -17,13 +17,12 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         InterceptorRegistration interceptorRegistration = registry.addInterceptor(new RequestInterceptor());
-
         /**
          *拦截所有请求
          */
         System.out.println("拦截请求");
         interceptorRegistration.addPathPatterns("/**");
-        interceptorRegistration.excludePathPatterns("/**/*.html","/**/*.js","/**/*.css");
+        interceptorRegistration.excludePathPatterns("/interview/loginp","/interview/logint","/interview/getcode","/interview/register");
 
     }
 

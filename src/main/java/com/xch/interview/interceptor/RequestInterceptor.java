@@ -29,7 +29,6 @@ public class RequestInterceptor implements HandlerInterceptor {
         Authorization = request.getHeader("Authoriz");
 //        response.setStatus(2001);
         if (Authorization==null){
-            System.out.println("lkjkl");
             return false;
         }
 

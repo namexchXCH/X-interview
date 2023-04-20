@@ -9,7 +9,7 @@
         </select>
 
          <insert id="addUser" parameterType="map">
-             insert into user(phone_number,password,user_id) values(#{phoneNumber},#{password},#{userId});
+             insert into user(phone_number,password,user_id,net_name) values(#{phoneNumber},#{password},#{userId},#{netName});
          </insert>
 
 
