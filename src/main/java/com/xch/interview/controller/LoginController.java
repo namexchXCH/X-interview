@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -29,9 +27,9 @@ public class LoginController {
      */
     @PostMapping("/interview/loginp")
     public BaseResult Passwordlogin(@RequestParam("phoneNumber") String phoneNumber, @RequestParam("code")String code, HttpServletResponse  response ){
-
-            response.setHeader("Authoriz", tokenUtil.sign(phoneNumber));
-
+       if (phoneNumber!=null){
+           response.setHeader("Authoriz", tokenUtil.sign(phoneNumber));
+         }
         return loginServiceImpl.passwordLogin(phoneNumber, code);
     }
 
