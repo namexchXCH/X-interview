@@ -37,6 +37,7 @@ public class MvcConfig implements WebMvcConfigurer {
                 .allowedHeaders("*") //放行哪些原始请求头部信息
                 .exposedHeaders("*") //暴露哪些头部信息
                 .allowCredentials(true) //是否发送 Cookie
+
                 .maxAge(3600);
     }
 

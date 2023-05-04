@@ -3,6 +3,7 @@ package com.xch.interview.service.Impl;
 import com.xch.interview.mapper.UserMapper;
 import com.xch.interview.pojo.logUser;
 import com.xch.interview.service.UserService;
+import com.xch.interview.utils.BaseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,9 +32,19 @@ public class UserServiceImpl implements UserService {
      */
 
     @Override
-    public logUser findUserByPhoneNumber(String PhoneNumber) {
+    public BaseResult findUserByPhoneNumber(String PhoneNumber) {
+        logUser user = userMapper.findUserByPhoneNumber(PhoneNumber);
+        return BaseResult.ok("成功",user);
+    }
 
-        return userMapper.findUserByPhoneNumber(PhoneNumber);
+    @Override
+    public BaseResult findUserByUserId(String UserId) {
+
+        logUser user = userMapper.findUserByUserId(UserId);
+        if (user==null){
+           return BaseResult.fail("用户不存在");
+        }
+        return BaseResult.ok("成功",user);
     }
 
 

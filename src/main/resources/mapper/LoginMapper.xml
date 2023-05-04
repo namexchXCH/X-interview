@@ -4,8 +4,17 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xch.interview.mapper.LoginMapper">
 
-          <select id="passwordLogin" parameterType="map" resultType="logUser">
-              select * from where phone_number = #{phoneNumber} and password = #{password};
+
+    <resultMap id="ResultMap" type="logUser">
+        <id property="phone_number" column="phone_number" />
+        <result property="password" column="password"/>
+        <result property="user_id" column="user_id"/>
+        <result property="net_name" column="net_name"/>
+        <result property="head_sculpture" column="head_sculpture"/>
+    </resultMap>
+
+    <select id="passwordLogin" parameterType="map" resultType="logUser">
+              select phone_number,user_id,net_name,head_sculpture from user where phone_number = #{phoneNumber} and password = #{password};
           </select>
 
 </mapper>

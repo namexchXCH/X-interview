@@ -24,4 +24,9 @@ public interface UserMapper {
      * 添加用户
      */
     Integer addUser(Map<String, Object> map);
+
+    /**
+     * 用户id查询用户
+     */
+    logUser findUserByUserId(String UserId);
 }

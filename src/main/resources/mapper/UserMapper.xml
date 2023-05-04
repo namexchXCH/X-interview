@@ -12,5 +12,9 @@
              insert into user(phone_number,password,user_id,net_name) values(#{phoneNumber},#{password},#{userId},#{netName});
          </insert>
 
+       <select id="findUserByUserId" resultType="logUser" parameterType="String">
+             select phone_number,user_id,net_name,head_sculpture from user where user_id = #{UserId};
+        </select>
+
 
 </mapper>

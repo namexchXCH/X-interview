@@ -25,6 +25,8 @@ public class LoginServiceImpl implements LoginService {
 
     @Resource
     private StringRedisTemplate stringRedisTemplate;
+    @Resource
+    private LoginMapper loginMapper;
 
    @Autowired
    private UserMapper userMapper;
@@ -39,16 +41,17 @@ public class LoginServiceImpl implements LoginService {
         stringObjectHashMap.put("phoneNumber",phoneNumber);
         stringObjectHashMap.put("password",password);
         logUser logUser1 = userMapper.findUserByPhoneNumber(phoneNumber);
+        logUser user = loginMapper.passwordLogin(stringObjectHashMap);
 
         if (logUser1==null){
             return BaseResult.fail("用户不存在，请先注册");
         }
 
-        if (logUser1.getPassword()==null || !password.equals(logUser1.getPassword())){
-            return BaseResult.fail("账号或密码错误");
+        if (user==null){
+            return BaseResult.fail("密码错误");
         }
 
-        return BaseResult.ok("登录成功",logUser1);
+        return BaseResult.ok("登录成功",user);
     }
 
 
@@ -116,8 +119,12 @@ public class LoginServiceImpl implements LoginService {
         stringStringHashMap.put("password",password);
         stringStringHashMap.put("userId",id);
         stringStringHashMap.put("netName", RandomName.getNickName());
-        Integer integer = userMapper.addUser(stringStringHashMap);
+        logUser user = userMapper.findUserByPhoneNumber(phoneNumber);
+        if (user != null){
+            return BaseResult.fail("该用已存在！");
+        }
 
+        Integer integer = userMapper.addUser(stringStringHashMap);
         if (integer > 0){
             logUser loguser = new logUser();
             loguser.setPhone_number(phoneNumber);

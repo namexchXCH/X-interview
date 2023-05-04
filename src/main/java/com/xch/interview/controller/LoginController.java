@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
 
 /**
  * @ClassName: logController
@@ -27,8 +28,11 @@ public class LoginController {
      */
     @PostMapping("/interview/loginp")
     public BaseResult Passwordlogin(@RequestParam("phoneNumber") String phoneNumber, @RequestParam("code")String code, HttpServletResponse  response ){
-       if (phoneNumber!=null){
-           response.setHeader("Authoriz", tokenUtil.sign(phoneNumber));
+        System.out.println(phoneNumber+":"+code);
+        if (phoneNumber!=null){
+
+            response.addHeader("Access-Control-Expose-Headers","Authorization");
+            response.setHeader("Authorization", tokenUtil.sign(phoneNumber));
          }
         return loginServiceImpl.passwordLogin(phoneNumber, code);
     }
@@ -58,6 +62,7 @@ public class LoginController {
     @PostMapping("/interview/register")
     public BaseResult RegisterAccount(@RequestParam("phoneNumber") String phoneNumber,@RequestParam("password") String password){
         return loginServiceImpl.RegisterAccount(phoneNumber,password);
+
     }
 
 }

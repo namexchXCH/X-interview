@@ -26,13 +26,16 @@ public class RequestInterceptor implements HandlerInterceptor {
         response.setContentType("text/html;charset=utf-8");
 
         String Authorization =null;
-        Authorization = request.getHeader("Authoriz");
+        Authorization = request.getHeader("Authorization");
 //        response.setStatus(2001);
-        if (Authorization==null){
+        logUser verify = tokenUtil.verify(Authorization);
+        if (Authorization==null ||verify==null){
+            response.setStatus(500);
             return false;
         }
 
-        logUser verify = tokenUtil.verify(Authorization);
+
+
         System.out.println(verify!=null);
 //        response.setStatus(400);
         return verify!=null;
