@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xch.interview.mapper.eightPartMapper">
+
+    <resultMap id="ResultMap" type="label">
+        <id property="labelId" column="label_id" javaType="String" />
+        <result property="labelText" column="label_text" javaType="String"/>
+        <result property="isActive" column="is_active" javaType="int"/>
+    </resultMap>
+
+  <select id="getAllLabel" resultMap="ResultMap" >
+      select * from label where is_active =1;
+  </select>
+
+</mapper>
