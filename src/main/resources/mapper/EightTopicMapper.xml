@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xch.interview.mapper.EightTopicMapper">
+
+        <resultMap id="ResultMap" type="EightTopic">
+            <id property="topicId" column="topic_id" javaType="String" />
+            <result property="memberId" column="member_id"/>
+            <result property="topicText" column="topicText"/>
+        </resultMap>
+
+        <select id="getgetallMeightTopic" resultMap="ResultMap" parameterType="String" >
+            select * from eighttopic  where  member_id = #{memberId}
+        </select>
+
+
+</mapper>

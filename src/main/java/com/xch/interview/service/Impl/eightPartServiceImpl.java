@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * @ClassName: eightPartServiceImpl
+ * 八股分类标签
  * @author: xiongconghui
  * @date: 2023-05-08 14:12
  **/

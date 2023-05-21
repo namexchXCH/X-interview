@@ -22,7 +22,8 @@ public class MvcConfig implements WebMvcConfigurer {
          */
         System.out.println("拦截请求");
         interceptorRegistration.addPathPatterns("/**");
-        interceptorRegistration.excludePathPatterns("/interview/loginp","/interview/logint","/interview/getcode","/interview/register");
+        interceptorRegistration.excludePathPatterns("/interview/loginp","/interview/logint",
+                "/interview/getcode","/interview/register","/interview/eightalllabel","/interview/eightalllabelmember");
 
     }
 

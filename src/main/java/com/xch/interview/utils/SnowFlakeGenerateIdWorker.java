@@ -145,6 +145,15 @@ public class SnowFlakeGenerateIdWorker {
                 | (workerId << workerIdShift)
                 | sequence);
     }
+    public synchronized Long generateLongNextId() {
+        long timestamp = timeGen();
+        timestamp = generateId(timestamp);
+        //移位并通过或运算拼到一起组成64位的ID
+        return (((timestamp - twepoch) << timestampLeftShift)
+                | (datacenterId << datacenterIdShift)
+                | (workerId << workerIdShift)
+                | sequence);
+    }
 
 
 

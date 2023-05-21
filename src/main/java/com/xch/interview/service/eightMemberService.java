@@ -6,7 +6,7 @@ import com.xch.interview.utils.BaseResult;
 import java.util.List;
 
 /**
- * @ClassName: eightMemberService
+ * 八股文标签下具体模块
  * @author: xiongconghui
  * @date: 2023-05-09 16:34
  **/
