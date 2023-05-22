@@ -15,12 +15,6 @@
     public class MeightTopic {
 
 
-
-        /**
-         * Mongodb中八股文题目文章id
-         */
-
-
         /**
          * Mongodb中八股文题目文章内容
          */

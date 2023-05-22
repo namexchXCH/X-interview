@@ -22,6 +22,11 @@ public class eightMemberServiceImpl implements eightMemberService {
     @Override
     public BaseResult getAllLabelMember(String labelId) {
         List<member> allLabelMember = eightMembermapper.getAllLabelMember(labelId);
+        if (allLabelMember.size()<1) {
+            return BaseResult.fail("暂时还没有内容！");
+        }
         return BaseResult.ok(allLabelMember);
     }
+
+
 }

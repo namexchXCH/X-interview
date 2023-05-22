@@ -1,9 +1,7 @@
 package com.xch.interview.controller;
 
-import com.xch.interview.pojo.MeightTopic;
 import com.xch.interview.service.EightTopicService;
 import com.xch.interview.utils.BaseResult;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;

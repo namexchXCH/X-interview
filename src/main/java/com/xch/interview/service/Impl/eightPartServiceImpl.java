@@ -23,6 +23,9 @@ public class eightPartServiceImpl implements eightPartService {
     public BaseResult getAllLabel() {
 
         List<label> allLabel = eightpartMapper.getAllLabel();
+        if (allLabel.size()<1){
+            return BaseResult.fail("暂时还没有内容！");
+        }
         return BaseResult.ok(allLabel);
     }
 }

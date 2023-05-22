@@ -6,9 +6,11 @@ package com.xch.interview.utils;
  * @date: 2023-04-17 20:27
  **/
 public class ECode {
+
     /**
      * 操作成功
      */
+
     public static final Integer OK = 200;
 
     /**

@@ -2,7 +2,12 @@ package com.xch.interview;
 
 import com.mongodb.client.MongoCollection;
 import com.xch.interview.mapper.eightPartMapper;
+import com.xch.interview.mapper.skillMapper;
+import com.xch.interview.mapper.skillMemberMapper;
 import com.xch.interview.pojo.MeightTopic;
+import com.xch.interview.pojo.MskillMember;
+import com.xch.interview.pojo.skill;
+import com.xch.interview.pojo.skillMember;
 import com.xch.interview.service.QiniuOSSService;
 import com.xch.interview.utils.SnowFlakeGenerateIdWorker;
 import com.xch.interview.utils.tokenUtil;
@@ -16,6 +21,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -29,6 +35,12 @@ class InterviewApplicationTests {
     private eightPartMapper eightpartMapper;
     @Resource
     private QiniuOSSService qiniuOSSService;
+
+    @Resource
+    private skillMapper skillmapper;
+
+    @Resource
+    private skillMemberMapper skillmemberMapper;
     @Test
     void contextLoads() throws InterruptedException {
 
@@ -43,13 +55,17 @@ class InterviewApplicationTests {
     @Test
     public void test3(){
 
-        MeightTopic meightTopic ;
-        for (long i = 0; i < 83; i++) {
-            meightTopic = new MeightTopic();
-            meightTopic.setTopicId((1105525201094836224L +i)+"");
-            meightTopic.setArticleText(""+ UUID.randomUUID());
-            MeightTopic save = mongoTemplate.save(meightTopic);
-        }
+//        MeightTopic meightTopic ;
+//        MskillMember mskillMember = new MskillMember();
+//        mskillMember.setMemberId("1105525201094836244");
+//        mskillMember.setMemberText("zfdgzdfgszdfg");
+//        MskillMember save = mongoTemplate.save(mskillMember);
+//        for (long i = 0; i < 83; i++) {
+//            meightTopic = new MeightTopic();
+//            meightTopic.setTopicId((1105525201094836224L +i)+"");
+//            meightTopic.setArticleText(""+ UUID.randomUUID());
+//            MeightTopic save = mongoTemplate.save(meightTopic);
+//        }
 //
 //        MeightTopic byId = mongoTemplate.findById("1105525201094836301", MeightTopic.class);
 //        System.out.println(byId.toString());
@@ -62,6 +78,19 @@ class InterviewApplicationTests {
 //            System.out.println("INSERT INTO eighttopic VALUES ('"+(i+1105525201094836224L)+"','1105525201094836224', 'cfghjcfg');");
 //
 //        }
+
+        List<skill> allSkill = skillmapper.getAllSkill();
+        System.out.println(allSkill);
+
+
     }
+
+    @Test
+   public void text4(){
+        List<skillMember> allskillMember = skillmemberMapper.getAllskillMember("1105525201094836244");
+        System.out.println(allskillMember);
+
+    }
+
 
 }

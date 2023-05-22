@@ -30,6 +30,9 @@ public class EightTopicServiceImpl implements EightTopicService {
     public BaseResult getgetallMeightTopic(String memberId) {
 
         List<EightTopic> eightTopics = eightTopicMapper.getgetallMeightTopic(memberId);
+        if (eightTopics.size()<0) {
+            return BaseResult.fail("获取失败！");
+        }
         return BaseResult.ok(eightTopics);
     }
 
@@ -38,8 +41,10 @@ public class EightTopicServiceImpl implements EightTopicService {
         Query query = new Query(Criteria.where("topicId").is(topicId));
         MeightTopic result = mongoTemplate.findOne(query, MeightTopic.class,"eighttopic");
         if (result==null){
-            return BaseResult.fail("获取内容失败！");
+            return BaseResult.fail("暂时还没有内容！");
         }
         return BaseResult.ok(result);
     }
+
+
 }

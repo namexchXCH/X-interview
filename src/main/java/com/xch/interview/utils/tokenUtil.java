@@ -47,8 +47,6 @@ public class tokenUtil {
         try {
             JWTVerifier verifier = JWT.require(Algorithm.HMAC256(TOKEN_SECRET)).withIssuer("auth0").build();
             DecodedJWT jwt = verifier.verify(token);
-//            System.out.println("认证通过：");
-//            System.out.println("issuer: " + jwt.getIssuer());
             System.out.println("phone_number: " + jwt.getClaim("phone_number").asString());
 
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
