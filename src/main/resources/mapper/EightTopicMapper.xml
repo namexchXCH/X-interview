@@ -11,7 +11,7 @@
         </resultMap>
 
         <select id="getgetallMeightTopic" resultMap="ResultMap" parameterType="String" >
-            select * from eighttopic  where  member_id = #{memberId}
+            select * from eighttopic  where  member_id = #{memberId} and is_open = 1;
         </select>
 
 

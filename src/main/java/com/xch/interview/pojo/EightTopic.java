@@ -27,6 +27,10 @@ public class EightTopic {
      * 八股文题 目类容
      */
     private String topicText;
+    /**
+     * 八股文题目是否开放，1开放、0不要开放
+     */
+    private int isOpen;
 
     public EightTopic() {
     }
@@ -65,22 +69,33 @@ public class EightTopic {
         this.topicId = topicId;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        EightTopic that = (EightTopic) o;
-        return Objects.equals(topicId, that.topicId) &&
-                Objects.equals(memberId, that.memberId) &&
-                Objects.equals(topicText, that.topicText);
+
+    public int getIsOpen() {
+        return isOpen;
+    }
+
+    public void setIsOpen(int isOpen) {
+        this.isOpen = isOpen;
     }
 
     @Override
     public String toString() {
         return "EightTopic{" +
-                "topicId=" + topicId +
+                "topicId='" + topicId + '\'' +
                 ", memberId='" + memberId + '\'' +
                 ", topicText='" + topicText + '\'' +
+                ", isOpen=" + isOpen +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        EightTopic that = (EightTopic) o;
+        return isOpen == that.isOpen &&
+                topicId.equals(that.topicId) &&
+                memberId.equals(that.memberId) &&
+                topicText.equals(that.topicText);
     }
 }

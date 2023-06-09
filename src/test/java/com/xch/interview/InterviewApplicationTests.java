@@ -2,12 +2,10 @@ package com.xch.interview;
 
 import com.mongodb.client.MongoCollection;
 import com.xch.interview.mapper.eightPartMapper;
+import com.xch.interview.mapper.resourceMapper;
 import com.xch.interview.mapper.skillMapper;
 import com.xch.interview.mapper.skillMemberMapper;
-import com.xch.interview.pojo.MeightTopic;
-import com.xch.interview.pojo.MskillMember;
-import com.xch.interview.pojo.skill;
-import com.xch.interview.pojo.skillMember;
+import com.xch.interview.pojo.*;
 import com.xch.interview.service.QiniuOSSService;
 import com.xch.interview.utils.SnowFlakeGenerateIdWorker;
 import com.xch.interview.utils.tokenUtil;
@@ -45,7 +43,7 @@ class InterviewApplicationTests {
     void contextLoads() throws InterruptedException {
 
         SnowFlakeGenerateIdWorker snowFlakeGenerateIdWorker = new SnowFlakeGenerateIdWorker(0L,0L);
-        for (int i = 0; i <10;i++){
+        for (int i = 0; i <14;i++){
             System.out.println(snowFlakeGenerateIdWorker.generateNextId());
         }
 
@@ -89,6 +87,15 @@ class InterviewApplicationTests {
    public void text4(){
         List<skillMember> allskillMember = skillmemberMapper.getAllskillMember("1105525201094836244");
         System.out.println(allskillMember);
+
+    }
+
+    @Resource
+    private resourceMapper resourcemapper;
+    @Test
+    public void text5(){
+        List<resourceTool> allResource = resourcemapper.getAllResource();
+        allResource.forEach(item-> System.out.println(item));
 
     }
 

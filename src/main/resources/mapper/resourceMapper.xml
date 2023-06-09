@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xch.interview.mapper.resourceMapper">
+
+        <resultMap id="ResultMap" type="resourceTool">
+            <id property="toolNavigationId" column="tool_navigation_id" />
+            <result property="toolNavigationIcon" column="tool_navigation_icon"/>
+            <result property="toolNavigationNmae" column="tool_navigation_nmae"/>
+            <result property="isOpen" column="is_open"/>
+            <collection property="allResource" ofType="resourceTable" >
+                <id property="resourceId" column="resource_id" />
+                <result property="toolNavigationId" column="navigation_id"/>
+                <result property="introduce" column="introduce"/>
+                <result property="resourceIcon" column="resource_icon"/>
+                <result property="resourceName" column="resource_name"/>
+                <result property="resourceUrl" column="resource_url"/>
+                <result property="isActive" column="is_active"/>
+            </collection>
+        </resultMap>
+
+    <resultMap id="ToolResultMap" type="toolNavigation">
+        <id property="toolNavigationId" column="tool_navigation_id" />
+        <result property="toolNavigationIcon" column="tool_navigation_icon"/>
+        <result property="toolNavigationNmae" column="tool_navigation_nmae"/>
+        <result property="isOpen" column="is_open"/>
+    </resultMap>
+
+    <resultMap id="ToolResultMap2" type="resourceTable">
+        <id property="resourceId" column="resource_id" />
+        <result property="toolNavigationId" column="navigation_id"/>
+        <result property="introduce" column="introduce"/>
+        <result property="resourceIcon" column="resource_icon"/>
+        <result property="resourceName" column="resource_name"/>
+        <result property="resourceUrl" column="resource_url"/>
+        <result property="isActive" column="is_active"/>
+    </resultMap>
+
+     <select id="getAllResource" resultMap="ResultMap">
+            SELECT * FROM (SELECT * FROM toolnavigation WHERE is_open = 1) AS navigation LEFT JOIN
+            (SELECT * FROM resourcetable WHERE is_active =1) AS resource ON navigation.tool_navigation_id = resource.navigation_id;
+     </select>
+
+     <select id="getAllToolCategory" resultMap="ToolResultMap">
+         select * from toolnavigation;
+     </select>
+
+     <select id="getTools" resultMap="ToolResultMap2">
+         select * from resourcetable where navigation_id = #{toolNavigationId};
+     </select>
+
+     <update id="ChangeActive" >
+         update resourcetable set is_active =#{isActive} where resource_id = #{resourceId};
+     </update>
+
+    <delete id="deletetool" parameterType="String">
+            delete from  resourcetable where resource_id = #{resourceId};
+     </delete>
+
+    <update id="EditTool" parameterType="resourceTable" >
+         update resourcetable set
+         resource_name =#{resourceName},introduce =#{introduce},resource_url =#{resourceUrl},resource_icon =#{resourceIcon}
+        where resource_id = #{resourceId};
+     </update>
+
+    <insert id="AddTool" parameterType="resourceTable">
+        insert into resourcetable(resource_id,navigation_id,introduce,resource_icon,resource_name,resource_url,is_active)
+        values (#{resourceId},#{toolNavigationId},#{introduce},#{resourceIcon},#{resourceName},#{resourceUrl},#{isActive});
+    </insert>
+
+</mapper>
