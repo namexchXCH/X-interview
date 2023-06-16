@@ -1,7 +1,11 @@
 package com.xch.interview.service;
 
 import com.xch.interview.pojo.EightTopic;
+import com.xch.interview.pojo.MeightTopic;
 import com.xch.interview.utils.BaseResult;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -13,6 +17,27 @@ import java.util.List;
  **/
 public interface EightTopicService {
 
-    public BaseResult getgetallMeightTopic(String memberId);
-    public BaseResult getallTopicAnswer(String topicId);
+     BaseResult getAllMeightTopic(String memberId);
+
+     BaseResult getallTopicAnswer(String topicId);
+
+     /**
+      * 分页获取题目
+      */
+     BaseResult getEightTopic( int PageNum, String memberId);
+
+     /**
+      * 获取题目数
+      */
+     BaseResult getPageSize(String memberId);
+
+     /**
+      * 更改题目是否开放
+      */
+     BaseResult changeTopicOpen(String topicId,int isOpen);
+
+     /**
+      * 更改题目是否开放
+      */
+   BaseResult ExitSaveTopic( MeightTopic meightTopic);
 }

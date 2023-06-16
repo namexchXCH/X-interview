@@ -1,8 +1,13 @@
 package com.xch.interview.mapper;
 
 import com.xch.interview.pojo.EightTopic;
+import com.xch.interview.utils.BaseResult;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -16,5 +21,28 @@ import java.util.List;
 @Component
 public interface EightTopicMapper {
 
-    public List<EightTopic> getgetallMeightTopic(String memberId);
+     /**
+      * 获取一个模块下所有八股文题目
+      */
+     List<EightTopic> getAllMeightTopic(@Param("memberId") String memberId);
+
+
+     EightTopic getOneMeightTopic(@Param("memberId") String memberId);
+
+     /**
+      * 分页获取题目
+      */
+     List<EightTopic> getEightTopic(@Param("PageNum") int PageNum,@Param("memberId") String memberId);
+
+     /**
+      * 获取题目数
+      */
+     int getPageSize(@Param("memberId") String memberId);
+
+     /**
+      * 更改题目是否开放
+      */
+     int changeTopicOpen(@Param("topicId") String topicId,@Param("isOpen") int isOpen);
+
+
 }

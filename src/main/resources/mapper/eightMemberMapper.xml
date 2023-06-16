@@ -16,6 +16,33 @@
     </resultMap>
 
    <select id="getAllLabelMember" resultMap="ResultMap" parameterType="String">
-       select * from member where label_id = #{labelId};
+       select * from member where label_id = #{labelId} and is_active = 1 ;
    </select>
+
+    <select id="getEightallMember" resultMap="ResultMap" parameterType="String">
+       select * from member where label_id = #{labelId};
+    </select>
+
+    <update id="changeMemberActive" parameterType="member" >
+        update member set is_active = #{isActive} where member_id = #{memberId};
+    </update>
+
+    <update id="changeMemberRequired" parameterType="member" >
+        update member set is_member_required = #{isMemberRequired} where member_id = #{memberId};
+    </update>
+
+    <update id="EditEightModule" parameterType="member" >
+        update member set cover_url = #{coverUrl},introduce = #{introduce}, member_title = #{memberTitle}
+        where member_id = #{memberId};
+    </update>
+
+     <insert id="addNewEightModule" parameterType="member">
+          insert into member(member_id,label_id,member_title,introduce,cover_url)
+           values (#{memberId},#{labelId},#{memberTitle},#{introduce},#{coverUrl});
+     </insert>
+
+     <delete id="deleteEightModule" parameterType="String">
+         delete from member where member_id = #{memberId};
+     </delete>
+
 </mapper>

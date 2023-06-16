@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 public interface UserService {
 
     Integer addUser(String PhoneNumber,String code);
+
     BaseResult findUserByPhoneNumber(String PhoneNumber);
+
     BaseResult findUserByUserId(String UserId);
 }

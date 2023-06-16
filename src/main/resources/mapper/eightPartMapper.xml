@@ -10,8 +10,24 @@
         <result property="isActive" column="is_active" javaType="int"/>
     </resultMap>
 
-  <select id="getAllLabel" resultMap="ResultMap" >
-      select * from label where is_active =1;
-  </select>
+      <select id="getAllLabel" resultMap="ResultMap" >
+          select * from label where is_active =1;
+      </select>
+
+     <select id="getLabels" resultMap="ResultMap" >
+          select * from label;
+      </select>
+
+     <update id="changeModuleActive" parameterType="label" >
+        update label set is_active = #{isActive} where label_id = #{labelId};
+     </update>
+
+    <insert id="addNewLable" parameterType="label">
+        insert into label(label_id,label_text,is_active) values (#{labelId},#{labelText},#{isActive});
+    </insert>
+
+    <update id="EditLabel" parameterType="label" >
+        update label set label_text = #{labelText} where label_id = #{labelId};
+     </update>
 
 </mapper>

@@ -8,11 +8,28 @@
             <id property="topicId" column="topic_id" javaType="String" />
             <result property="memberId" column="member_id"/>
             <result property="topicText" column="topicText"/>
+            <result property="isOpen" column="is_open"/>
         </resultMap>
 
-        <select id="getgetallMeightTopic" resultMap="ResultMap" parameterType="String" >
+        <select id="getAllMeightTopic" resultMap="ResultMap" parameterType="String" >
             select * from eighttopic  where  member_id = #{memberId} and is_open = 1;
         </select>
+
+         <select id="getOneMeightTopic" parameterType="String" resultType="EightTopic">
+              select * from eighttopic  where  member_id = #{memberId} limit 1;
+         </select>
+
+         <select id="getEightTopic" resultMap="ResultMap">
+              select * from eighttopic  where  member_id = #{memberId} limit #{PageNum},10;
+         </select>
+
+         <select id="getPageSize" parameterType="String" resultType="int">
+              select count(*) from eighttopic  where  member_id = #{memberId};
+         </select>
+
+        <update id="changeTopicOpen" >
+              update eighttopic set is_open = #{isOpen} where topic_id = #{topicId};
+        </update>
 
 
 </mapper>

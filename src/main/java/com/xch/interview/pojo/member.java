@@ -15,9 +15,9 @@ public class member {
     private String memberTitle;
     private String introduce;
     private String coverUrl;
-    private int readerNumber;
-    private int isMemberRequired;
-    private int isActive;
+    private int readerNumber = 0;
+    private int isMemberRequired = 0;
+    private int isActive = 0;
 
     public member() {
     }
