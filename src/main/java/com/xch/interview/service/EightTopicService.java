@@ -39,5 +39,20 @@ public interface EightTopicService {
      /**
       * 更改题目是否开放
       */
-   BaseResult ExitSaveTopic( MeightTopic meightTopic);
+     BaseResult ExitSaveTopic( MeightTopic meightTopic);
+
+     /**
+      * 删除八股文题目topic
+      */
+     BaseResult DeleteEightTopic(String topicId);
+
+     /**
+      * 更改题目
+      */
+     BaseResult SaveEditEightTitle(EightTopic eightTopic);
+
+     /**
+      * 新增题目
+      */
+     BaseResult SaveNewTopic(EightTopic eightTopic);
 }

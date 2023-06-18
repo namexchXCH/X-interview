@@ -1,12 +1,11 @@
 package com.xch.interview;
 
 import com.mongodb.client.MongoCollection;
-import com.xch.interview.mapper.eightPartMapper;
-import com.xch.interview.mapper.resourceMapper;
-import com.xch.interview.mapper.skillMapper;
-import com.xch.interview.mapper.skillMemberMapper;
+import com.xch.interview.mapper.*;
 import com.xch.interview.pojo.*;
 import com.xch.interview.service.QiniuOSSService;
+import com.xch.interview.service.eightMemberService;
+import com.xch.interview.utils.BaseResult;
 import com.xch.interview.utils.SnowFlakeGenerateIdWorker;
 import com.xch.interview.utils.tokenUtil;
 import org.bson.Document;
@@ -33,6 +32,8 @@ class InterviewApplicationTests {
     private eightPartMapper eightpartMapper;
     @Resource
     private QiniuOSSService qiniuOSSService;
+    @Resource
+    private EightTopicMapper eightTopicMapper;
 
     @Resource
     private skillMapper skillmapper;
@@ -92,10 +93,16 @@ class InterviewApplicationTests {
 
     @Resource
     private resourceMapper resourcemapper;
+    @Resource
+    private eightMemberService eightMemberservice;
     @Test
     public void text5(){
-        List<resourceTool> allResource = resourcemapper.getAllResource();
-        allResource.forEach(item-> System.out.println(item));
+//        List<resourceTool> allResource = resourcemapper.getAllResource();
+//        allResource.forEach(item-> System.out.println(item));
+//        List<EightTopic> oneMeightTopic = eightTopicMapper.getOneMeightTopic("1105525201094836224");
+//        System.out.println(oneMeightTopic.size());
+        BaseResult baseResult = eightMemberservice.deleteEightModule("1105525201094836224");
+        System.out.println(baseResult.toString());
 
     }
 

@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public interface EightTopicMapper {
      List<EightTopic> getAllMeightTopic(@Param("memberId") String memberId);
 
 
-     EightTopic getOneMeightTopic(@Param("memberId") String memberId);
+     List<EightTopic> getOneMeightTopic(@Param("memberId") String memberId);
 
      /**
       * 分页获取题目
@@ -43,6 +44,21 @@ public interface EightTopicMapper {
       * 更改题目是否开放
       */
      int changeTopicOpen(@Param("topicId") String topicId,@Param("isOpen") int isOpen);
+
+     /**
+      * 删除八股文题目topic
+      */
+     int DeleteEightTopic(@Param("topicId")String topicId);
+
+     /**
+      * 更改题目
+      */
+     int SaveEditEightTitle(EightTopic eightTopic);
+
+     /**
+      * 新增题目
+      */
+     int SaveNewTopic(EightTopic eightTopic);
 
 
 }

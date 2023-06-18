@@ -27,6 +27,7 @@ public class EightTopic {
      * 八股文题 目类容
      */
     private String topicText;
+
     /**
      * 八股文题目是否开放，1开放、0不要开放
      */

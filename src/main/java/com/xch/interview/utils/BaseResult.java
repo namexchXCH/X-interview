@@ -126,4 +126,12 @@ public class BaseResult<T> {
     }
 
 
+    @Override
+    public String toString() {
+        return "BaseResult{" +
+                "code=" + code +
+                ", message='" + message + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

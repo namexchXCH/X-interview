@@ -79,10 +79,11 @@ public class eightMemberServiceImpl implements eightMemberService {
 
     @Override
     public BaseResult deleteEightModule(String memberId) {
-        EightTopic oneMeightTopic = eightTopicMapper.getOneMeightTopic(memberId);
-        if (oneMeightTopic != null){
+        List<EightTopic> oneMeightTopic = eightTopicMapper.getOneMeightTopic(memberId);
+        if (oneMeightTopic.size() > 0){
             return BaseResult.fail("该模块下还有数据，不可以删除");
         }
+        System.out.println(oneMeightTopic.toString());
         int i = eightMembermapper.deleteEightModule(memberId);
         if  ( i > 0 ){
             return BaseResult.ok("ok");

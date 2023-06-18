@@ -7,7 +7,7 @@
         <resultMap id="ResultMap" type="EightTopic">
             <id property="topicId" column="topic_id" javaType="String" />
             <result property="memberId" column="member_id"/>
-            <result property="topicText" column="topicText"/>
+            <result property="topicText" column="topic_text"/>
             <result property="isOpen" column="is_open"/>
         </resultMap>
 
@@ -15,7 +15,7 @@
             select * from eighttopic  where  member_id = #{memberId} and is_open = 1;
         </select>
 
-         <select id="getOneMeightTopic" parameterType="String" resultType="EightTopic">
+         <select id="getOneMeightTopic" parameterType="String" resultMap="ResultMap">
               select * from eighttopic  where  member_id = #{memberId} limit 1;
          </select>
 
@@ -30,6 +30,19 @@
         <update id="changeTopicOpen" >
               update eighttopic set is_open = #{isOpen} where topic_id = #{topicId};
         </update>
+
+        <delete id="DeleteEightTopic" parameterType="String">
+            delete from eighttopic where topic_id = #{topicId};
+        </delete>
+
+         <update id="SaveEditEightTitle" parameterType="EightTopic">
+              update eighttopic set topic_text = #{topicText} where topic_id = #{topicId};
+        </update>
+
+        <insert id="SaveNewTopic" parameterType="EightTopic">
+             insert into eighttopic(topic_id,member_id,topic_text,is_open) values (#{topicId},#{memberId},#{topicText},#{isOpen});
+        </insert>
+
 
 
 </mapper>

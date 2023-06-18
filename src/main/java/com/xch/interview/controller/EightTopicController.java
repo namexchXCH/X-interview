@@ -1,5 +1,6 @@
 package com.xch.interview.controller;
 
+import com.xch.interview.pojo.EightTopic;
 import com.xch.interview.pojo.MeightTopic;
 import com.xch.interview.service.EightTopicService;
 import com.xch.interview.utils.BaseResult;
@@ -61,11 +62,36 @@ public class EightTopicController {
     }
 
     /**
-     * 更改题目类容
+     * 更改题目答案
      */
     @PutMapping("/interview/exittopic")
     public BaseResult ExitSaveTopic(@RequestBody MeightTopic meightTopic){
         return eightTopicServiceimpl.ExitSaveTopic(meightTopic);
+    }
+
+    /**
+     * 删除八股文题目topic
+     */
+    @DeleteMapping("/interview/deletetopic")
+    public BaseResult DeleteEightTopic(@RequestParam("topicId") String topicId){
+        return eightTopicServiceimpl.DeleteEightTopic(topicId);
+    }
+
+
+    /**
+     * 更改题目
+     */
+    @PutMapping("/interview/saveediteeighttitle")
+    public BaseResult SaveEditEightTitle(@RequestBody EightTopic eightTopic){
+        return eightTopicServiceimpl.SaveEditEightTitle(eightTopic);
+    }
+
+    /**
+     * 新增题目
+     */
+    @PostMapping("/interview/savenewtopic")
+    public BaseResult SaveNewTopic(@RequestBody EightTopic eightTopic){
+        return eightTopicServiceimpl.SaveNewTopic(eightTopic);
     }
 
 
