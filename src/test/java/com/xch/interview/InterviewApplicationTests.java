@@ -101,8 +101,17 @@ class InterviewApplicationTests {
 //        allResource.forEach(item-> System.out.println(item));
 //        List<EightTopic> oneMeightTopic = eightTopicMapper.getOneMeightTopic("1105525201094836224");
 //        System.out.println(oneMeightTopic.size());
-        BaseResult baseResult = eightMemberservice.deleteEightModule("1105525201094836224");
-        System.out.println(baseResult.toString());
+//        BaseResult baseResult = eightMemberservice.deleteEightModule("1105525201094836224");
+//        System.out.println(baseResult.toString());
+//            mongoTemplate.createCollection("onepage");
+//            OnePage onePage = new OnePage();
+//            onePage.setOnePageId("1097964992621182976");
+//
+//            OnePage save = mongoTemplate.save(onePage);
+//            System.out.println(save.toString());
+
+        List<skillMember> skillMembers = skillmemberMapper.SearchOneskillMemberBySkillId("1105525201094836244");
+        System.out.println(skillMembers);
 
     }
 

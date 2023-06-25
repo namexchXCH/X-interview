@@ -14,41 +14,42 @@ public class MskillMember {
     /**
      * 技能成员id
      */
-    private String MemberId;
+    private String memberId;
     /**
      * 技能成员内容
      */
-    private String MemberText;
+    private String memberText;
+
 
     public MskillMember(String memberId, String memberText) {
-        MemberId = memberId;
-        MemberText = memberText;
+        this.memberId = memberId;
+        this.memberText = memberText;
     }
 
     public MskillMember() {
     }
 
     public String getMemberId() {
-        return MemberId;
+        return memberId;
     }
 
     public void setMemberId(String memberId) {
-        MemberId = memberId;
+        this.memberId = memberId;
     }
 
     public String getMemberText() {
-        return MemberText;
+        return memberText;
     }
 
     public void setMemberText(String memberText) {
-        MemberText = memberText;
+        this.memberText = memberText;
     }
 
     @Override
     public String toString() {
         return "MskillMember{" +
-                "MemberId='" + MemberId + '\'' +
-                ", MemberText='" + MemberText + '\'' +
+                "memberId='" + memberId + '\'' +
+                ", memberText='" + memberText + '\'' +
                 '}';
     }
 
@@ -57,12 +58,12 @@ public class MskillMember {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MskillMember that = (MskillMember) o;
-        return MemberId.equals(that.MemberId) &&
-                MemberText.equals(that.MemberText);
+        return memberId.equals(that.memberId) &&
+                memberText.equals(that.memberText);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(MemberId, MemberText);
+        return Objects.hash(memberId, memberText);
     }
 }

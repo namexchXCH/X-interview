@@ -14,6 +14,24 @@
         select * from skill where is_active = 1;
     </select>
 
+    <select id="getAllToSkill" resultMap="ResultMap" >
+        select * from skill;
+    </select>
 
+    <update id="changeSkillIsopem" parameterType="skill" >
+         update skill set is_active = #{isActive} where skill_id = #{skillId};
+     </update>
+
+    <insert id="addSkill" parameterType="skill">
+         insert into skill(skill_id,skill_name,is_active) values (#{skillId},#{skillName},#{isActive});
+    </insert>
+
+   <update id="editSkillName" parameterType="skill">
+        update skill set skill_name = #{skillName} where skill_id = #{skillId};
+   </update>
+
+    <delete id="deleteSkillById" parameterType="String">
+         delete from skill where skill_id = #{skillId};
+     </delete>
 
 </mapper>

@@ -68,7 +68,6 @@ public class eightMemberServiceImpl implements eightMemberService {
         SnowFlakeGenerateIdWorker snowFlakeGenerateIdWorker = new SnowFlakeGenerateIdWorker(0L,0L);
 //        设置id
         String Id = snowFlakeGenerateIdWorker.generateNextId();
-        snowFlakeGenerateIdWorker.generateNextId();
         Member.setMemberId(Id);
         int i = eightMembermapper.addNewEightModule(Member);
         if ( i > 0 ){

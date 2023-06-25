@@ -5,14 +5,44 @@
 <mapper namespace="com.xch.interview.mapper.skillMemberMapper">
 
     <resultMap id="ResultMap" type="skillMember">
-        <id property="MemberId" column="member_id" />
+        <id property="memberId" column="member_id" />
         <result property="skillId" column="skill_id"/>
-        <result property="MemberName" column="member_name"/>
+        <result property="memberName" column="member_name"/>
+        <result property="isOpen" column="is_open"/>
     </resultMap>
 
     <select id="getAllskillMember" resultMap="ResultMap" parameterType="String">
-        select * from skillmember where skill_id = #{skillId};
+        select * from skillmember where skill_id = #{skillId} and is_open = 1;
     </select>
 
+    <select id="getSkillMemberNum" resultType="int"  parameterType="String">
+        select count(*) from skillmember where skill_id = #{skillId};
+    </select>
+
+
+    <select id="getSkillMemberPage" resultMap="ResultMap" >
+        select * from skillmember where skill_id = #{skillId} limit #{pageNum},10;
+    </select>
+
+    <update id="changeSkillMenberTitle" parameterType="skillMember" >
+        update skillmember set member_name = #{memberName} where member_id = #{memberId};
+    </update>
+
+    <update id="changeSkillMenberOpen" parameterType="skillMember" >
+        update skillmember set is_open = #{isOpen} where member_id = #{memberId};
+    </update>
+
+   <delete id="DeleteSkillMemberText" parameterType="String" >
+       delete from skillmember where member_id = #{memberId};
+   </delete>
+
+  <insert id="addSkillSember" parameterType="skillMember" >
+        insert into skillmember(member_id,skill_id,member_name,is_open)
+           values (#{memberId},#{skillId},#{memberName},#{isOpen});
+  </insert>
+
+    <select id="SearchOneskillMemberBySkillId" resultMap="ResultMap" parameterType="String">
+        select * from skillmember where skill_id = #{skillId} limit 1;
+    </select>
 
 </mapper>

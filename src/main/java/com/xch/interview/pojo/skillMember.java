@@ -16,17 +16,21 @@ public class skillMember {
     /**
      * 技能成员id
      */
-    private String MemberId;
+    private String memberId;
 
     /**
      * 技能成员名字
      */
-    private String MemberName;
+    private String memberName;
 
-    public skillMember(String skillId, String memberId, String memberName) {
+    private int isOpen;
+
+
+    public skillMember(String skillId, String memberId, String memberName, int isOpen) {
         this.skillId = skillId;
-        MemberId = memberId;
-        MemberName = memberName;
+        this.memberId = memberId;
+        this.memberName = memberName;
+        this.isOpen = isOpen;
     }
 
     public skillMember() {
@@ -41,28 +45,27 @@ public class skillMember {
     }
 
     public String getMemberId() {
-        return MemberId;
+        return memberId;
     }
 
     public void setMemberId(String memberId) {
-        MemberId = memberId;
+        this.memberId = memberId;
     }
 
     public String getMemberName() {
-        return MemberName;
+        return memberName;
     }
 
     public void setMemberName(String memberName) {
-        MemberName = memberName;
+        this.memberName = memberName;
     }
 
-    @Override
-    public String toString() {
-        return "skillMember{" +
-                "skillId='" + skillId + '\'' +
-                ", MemberId='" + MemberId + '\'' +
-                ", MemberName='" + MemberName + '\'' +
-                '}';
+    public int getIsOpen() {
+        return isOpen;
+    }
+
+    public void setIsOpen(int isOpen) {
+        this.isOpen = isOpen;
     }
 
     @Override
@@ -70,13 +73,24 @@ public class skillMember {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         skillMember that = (skillMember) o;
-        return skillId.equals(that.skillId) &&
-                MemberId.equals(that.MemberId) &&
-                MemberName.equals(that.MemberName);
+        return isOpen == that.isOpen &&
+                skillId.equals(that.skillId) &&
+                memberId.equals(that.memberId) &&
+                memberName.equals(that.memberName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(skillId, MemberId, MemberName);
+        return Objects.hash(skillId, memberId, memberName, isOpen);
+    }
+
+    @Override
+    public String toString() {
+        return "skillMember{" +
+                "skillId='" + skillId + '\'' +
+                ", memberId='" + memberId + '\'' +
+                ", memberName='" + memberName + '\'' +
+                ", isOpen=" + isOpen +
+                '}';
     }
 }
