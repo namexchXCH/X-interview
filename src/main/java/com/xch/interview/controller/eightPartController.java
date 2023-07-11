@@ -19,8 +19,8 @@ import javax.annotation.Resource;
 @ResponseBody
 public class eightPartController {
 
-    @Autowired
-    private QiniuOSSService qiniuOSSService;
+//    @Autowired
+//    private QiniuOSSService qiniuOSSService;
     @Autowired
     private eightPartService eightpartserviceImpl;
     /**
@@ -67,11 +67,11 @@ public class eightPartController {
     }
 
 
-    @PostMapping("/interview/fils")
-    public BaseResult upload(@RequestParam("file") MultipartFile file,@RequestParam("filename") String fileName){
-        String upload = qiniuOSSService.upload(file,"interview1/"+fileName);
-        return BaseResult.ok(upload) ;
-    }
+//    @PostMapping("/interview/fils")
+//    public BaseResult upload(@RequestParam("file") MultipartFile file,@RequestParam("filename") String fileName){
+//        String upload = qiniuOSSService.upload(file,"interview1/"+fileName);
+//        return BaseResult.ok(upload) ;
+//    }
 
 
 

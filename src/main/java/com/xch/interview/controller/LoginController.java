@@ -27,7 +27,8 @@ public class LoginController {
      *密码登录
      */
     @PostMapping("/interview/loginp")
-    public BaseResult Passwordlogin(@RequestParam("phoneNumber") String phoneNumber, @RequestParam("code")String code, HttpServletResponse  response ){
+    public BaseResult Passwordlogin(@RequestParam("phoneNumber") String phoneNumber, @RequestParam("code")String code,
+                                    HttpServletResponse  response ){
         System.out.println(phoneNumber+":"+code);
         if (phoneNumber!=null){
 

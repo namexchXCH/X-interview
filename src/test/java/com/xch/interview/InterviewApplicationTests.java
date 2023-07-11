@@ -1,6 +1,8 @@
 package com.xch.interview;
 
 import com.mongodb.client.MongoCollection;
+import com.xch.interview.controller.OnePageController;
+import com.xch.interview.controller.resourceController;
 import com.xch.interview.mapper.*;
 import com.xch.interview.pojo.*;
 import com.xch.interview.service.QiniuOSSService;
@@ -37,6 +39,9 @@ class InterviewApplicationTests {
 
     @Resource
     private skillMapper skillmapper;
+
+    @Resource
+    private resourceController resourcecontroller;
 
     @Resource
     private skillMemberMapper skillmemberMapper;
@@ -110,10 +115,23 @@ class InterviewApplicationTests {
 //            OnePage save = mongoTemplate.save(onePage);
 //            System.out.println(save.toString());
 
-        List<skillMember> skillMembers = skillmemberMapper.SearchOneskillMemberBySkillId("1105525201094836244");
-        System.out.println(skillMembers);
+//        List<skillMember> skillMembers = skillmemberMapper.SearchOneskillMemberBySkillId("1105525201094836244");
+//        System.out.println(skillMembers);
+        BaseResult allresource = resourcecontroller.getAllresource();
+        System.out.println(allresource);
 
     }
+     private OnePageController onePageController;
 
+    @Test
+    public void text6(){
+
+        OnePage onePage = new OnePage();
+        onePage.setOnePageText("azsdfgasdfgsdfagsadfgsdfgsdfg");
+        onePage.setOnePageId("1097964992621182978");
+        OnePage save = mongoTemplate.save(onePage);
+        System.out.println(save);
+
+    }
 
 }

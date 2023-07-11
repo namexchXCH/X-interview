@@ -134,6 +134,7 @@ public class LoginServiceImpl implements LoginService {
         }
 
         return BaseResult.fail("注册失败");
+
     }
 
 

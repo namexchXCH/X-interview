@@ -24,4 +24,29 @@ public interface OnePageService {
      * 编辑首页信息
      */
    BaseResult editOnePageData(OnePage onePage);
+
+
+    /**
+     * 获取网站时间信息
+     */
+
+   BaseResult getWebTimeLine();
+
+    /**
+     * 编辑网站时间信息
+     */
+
+   BaseResult editWebTimeLine(OnePage onePage);
+
+
+    /**
+     * 获取网站信息
+     */
+
+    BaseResult getWebInfo();
+
+    /**
+     * 编辑网站信息
+     */
+   BaseResult editWebInfo(OnePage onePage);
 }

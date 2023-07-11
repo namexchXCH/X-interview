@@ -35,4 +35,40 @@ public class OnePageController {
     public BaseResult editOnePageData(@RequestBody OnePage onePage){
         return onePageServiceImpl.editOnePageData(onePage);
     }
+
+
+    /**
+     * 获取网站时间信息
+     */
+    @GetMapping("/interview/webtimelinedata")
+    public BaseResult getWebTimeLine(){
+        return onePageServiceImpl.getWebTimeLine();
+    }
+
+
+    /**
+     * 编辑网站时间信息
+     */
+    @PutMapping("/interview/editwebtimelinedata")
+    public BaseResult editWebTimeLine(@RequestBody OnePage onePage){
+        return onePageServiceImpl.editWebTimeLine(onePage);
+    }
+
+
+    /**
+     * 获取网站信息
+     */
+    @GetMapping("/interview/webdata")
+    public BaseResult getWebInfo(){
+        return onePageServiceImpl.getWebInfo();
+    }
+
+
+    /**
+     * 编辑网站信息
+     */
+    @PutMapping("/interview/editwebdata")
+    public BaseResult editWebInfo(@RequestBody OnePage onePage){
+        return onePageServiceImpl.editWebInfo(onePage);
+    }
 }
